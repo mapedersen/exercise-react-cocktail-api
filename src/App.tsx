@@ -7,8 +7,6 @@ import NavBar from "./components/NavBar";
 export default function App(): ReactElement {
   const { randomCocktail, fetchNewCocktail } = UseCocktail();
 
-  console.log("Random Cocktail:", randomCocktail);
-
   return (
     <div className="App">
       <NavBar />

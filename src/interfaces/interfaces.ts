@@ -2,14 +2,15 @@ export interface ICocktail {
   name: string;
   id: string;
   image: string;
+  category: string;
+  tags: string[];
+  ingredients: string[];
+  measurements: string[];
+  glass: string;
 }
 
 export interface ICocktailResponse {
-  drinks: Array<{
-    idDrink: string;
-    strDrink: string;
-    strDrinkThumb: string;
-  }>;
+  drinks: ICocktail[];
 }
 
 export interface ICocktailContext {

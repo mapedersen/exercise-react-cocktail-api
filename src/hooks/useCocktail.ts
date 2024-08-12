@@ -9,6 +9,8 @@ export function UseCocktail() {
     try {
       const data = await fetchRandomCockTail();
       setRandomCocktail(data);
+
+      // Catch errors
     } catch (error) {
       if (error instanceof Error) {
         console.error("Failed to fetch cocktail:", error.message);
@@ -18,6 +20,7 @@ export function UseCocktail() {
     }
   }
 
+  // Fetch a new cocktail when component mounts
   useEffect(() => {
     fetchNewCocktail();
   }, []);

@@ -7,18 +7,33 @@ export async function fetchRandomCockTail(): Promise<ICocktail | null> {
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
     }
-    const data: ICocktailResponse = await response.json();
+    const data = await response.json();
 
-    if (data.drinks.length === 0) {
-      throw new Error("No cocktail data found.");
+    if (!data.drinks || data.drinks.length === 0) {
+      return null;
     }
 
-    const cocktail: ICocktail = {
-      id: data.drinks[0].idDrink,
-      name: data.drinks[0].strDrink,
-      image: data.drinks[0].strDrinkThumb,
+    const drink = data.drinks[0];
+
+    const ingredients: string[] = [];
+    const measurements: string[] = [];
+    for (let i = 1; i <= 15; i++) {
+      const ingredient = drink[`strIngredient${i}`];
+      const measurement = drink[`strMeasure${i}`];
+      if (ingredient) ingredients.push(ingredient);
+      if (measurement) measurements.push(measurement);
+    }
+
+    return {
+      id: drink.idDrink,
+      name: drink.strDrink,
+      image: drink.strDrinkThumb,
+      category: drink.strCategory || "",
+      tags: drink.strTags ? drink.strTags.split(",") : [],
+      ingredients,
+      measurements,
+      glass: drink.strGlass || "",
     };
-    return cocktail;
   } catch (error) {
     if (error instanceof Error) {
       console.error("Failed to fetch cocktail:", error.message);
