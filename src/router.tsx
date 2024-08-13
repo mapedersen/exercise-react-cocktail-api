@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import LandingPage from "./pages/LandingPage";
 import SearchPage from "./pages/SearchPage";
-import RandomCocktail from "./pages/RandomCocktail";
+import CocktailInfoPage from "./pages/CocktailInfoPage";
 
 export const router = createBrowserRouter([
   {
@@ -14,8 +14,8 @@ export const router = createBrowserRouter([
         index: true,
       },
       {
-        path: "/random-cocktail/:name",
-        element: <RandomCocktail />,
+        path: "/cocktail/:name",
+        element: <CocktailInfoPage />,
       },
       {
         path: "/search",
