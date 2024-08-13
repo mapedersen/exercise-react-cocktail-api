@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
-import LandingPage from "./pages/LandingPage";
+import LandingPageRandomCocktail from "./pages/LandingPageRandomCocktail";
 import SearchPage from "./pages/SearchPage";
 import CocktailInfoPage from "./pages/CocktailInfoPage";
 
@@ -10,7 +10,7 @@ export const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        element: <LandingPage />,
+        element: <LandingPageRandomCocktail />,
         index: true,
       },
       {

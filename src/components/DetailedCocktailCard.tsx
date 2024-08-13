@@ -1,23 +1,27 @@
 import { ReactElement } from "react";
-import { useOutletContext } from "react-router-dom";
-import { ICocktailContext } from "../interfaces/interfaces";
+import { ICocktail } from "../interfaces/interfaces";
 
-export default function DetailedCocktailCard(): ReactElement {
-  const { randomCocktail } = useOutletContext<ICocktailContext>();
+interface DetailedCocktailCardProps {
+  cocktail: ICocktail;
+}
+
+export default function DetailedCocktailCard({
+  cocktail,
+}: DetailedCocktailCardProps): ReactElement {
   return (
     <div className="DetailedCocktailCard">
-      {randomCocktail ? (
+      {cocktail ? (
         <>
-          <h2>{randomCocktail.name}</h2>
-          <img src={randomCocktail.image} alt={randomCocktail.name} />
-          <p>Category: {randomCocktail.category}</p>
-          <p>Tags: {randomCocktail.tags.join(", ")}</p>
-          <p>Glass: {randomCocktail.glass}</p>
+          <h2>{cocktail.name}</h2>
+          <img src={cocktail.image} alt={cocktail.name} />
+          <p>Category: {cocktail.category}</p>
+          <p>Tags: {cocktail.tags.join(", ")}</p>
+          <p>Glass: {cocktail.glass}</p>
           <h3>Ingredients:</h3>
           <ul>
-            {randomCocktail.ingredients.map((ingredient, index) => (
+            {cocktail.ingredients.map((ingredient, index) => (
               <li key={index}>
-                {ingredient} - {randomCocktail.measurements[index]}
+                {ingredient} - {cocktail.measurements[index]}
               </li>
             ))}
           </ul>

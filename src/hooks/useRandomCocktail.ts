@@ -3,12 +3,11 @@ import { fetchRandomCockTail } from "../api/cocktailService";
 import { ICocktail } from "../interfaces/interfaces";
 
 // Custom hook to handle state for the random Cocktail, starts as null before data is fetched
-export function useCocktail() {
+export function useRandomCocktail() {
   const [randomCocktail, setRandomCocktail] = useState<ICocktail | null>(null);
-  const [selectedCocktail, setSelectedCocktail] = useState<ICocktail | null>(null);
 
   //Async function that uses the cocktailService to request a new random cocktail
-  async function fetchNewCocktail() {
+  async function fetchNewRandomCocktail() {
     try {
       // Fetch the cocktail data and update state
       const data = await fetchRandomCockTail();
@@ -27,9 +26,9 @@ export function useCocktail() {
 
   // Run the code once when the component mounts
   useEffect(() => {
-    fetchNewCocktail();
+    fetchNewRandomCocktail();
   }, []);
 
   // Return the cocktail data and the fetch function to be used in components
-  return { randomCocktail, fetchNewCocktail, selectedCocktail, setSelectedCocktail };
+  return { randomCocktail, fetchNewRandomCocktail };
 }

@@ -1,4 +1,5 @@
 import { ICocktail } from "../interfaces/interfaces";
+import { transformDrinkData } from "../utils/utils";
 
 // Function to fetch a random cocktail from an API, returning a promise that resolves to a cocktail object or null
 export async function fetchRandomCockTail(): Promise<ICocktail | null> {
@@ -41,16 +42,40 @@ export async function fetchRandomCockTail(): Promise<ICocktail | null> {
     }
 
     // Return a cocktail object with all the relevant data
-    return {
-      id: drink.idDrink,
-      name: drink.strDrink,
-      image: drink.strDrinkThumb,
-      category: drink.strCategory || "",
-      tags: drink.strTags ? drink.strTags.split(",") : [],
-      ingredients,
-      measurements,
-      glass: drink.strGlass || "",
-    };
+    return transformDrinkData(drink);
+  } catch (error) {
+    // If an error occurs during the fetch or processing, log it and return null
+    if (error instanceof Error) {
+      console.error("Failed to fetch cocktail:", error.message);
+      return null;
+    } else {
+      console.error("An unknown error occurred");
+      return null;
+    }
+  }
+}
+
+// Function to fetch a cocktail by id from an CocktailDBAPI, returns a promise that resolves to a cocktail object or null
+export async function fetchCocktailByName(name: string): Promise<ICocktail | null> {
+  // Replace hyphens with spaces
+  const formattedName = name.replace(/-/g, " ");
+  // Encode the name to handle spaces and other special characters
+  const encodedName = encodeURIComponent(formattedName);
+  const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${encodedName}`;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+    const data = await response.json();
+
+    if (!data.drinks || data.drinks.length === 0) {
+      return null;
+    }
+
+    const drink = data.drinks[0];
+
+    return transformDrinkData(drink);
   } catch (error) {
     // If an error occurs during the fetch or processing, log it and return null
     if (error instanceof Error) {

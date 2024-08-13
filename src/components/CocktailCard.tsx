@@ -1,13 +1,15 @@
 import { ReactElement } from "react";
-import { useOutletContext } from "react-router-dom";
-import { ICocktailContext } from "../interfaces/interfaces";
+import { ICocktail } from "../interfaces/interfaces";
 
-export default function CocktailCard(): ReactElement {
-  const { randomCocktail } = useOutletContext<ICocktailContext>();
+interface CocktailCardProps {
+  cocktail: ICocktail | null;
+}
+
+export default function CocktailCard({ cocktail }: CocktailCardProps): ReactElement {
   return (
     <div className="CocktailCard">
-      <h2>{randomCocktail?.name || "Unknown"}</h2>
-      <img src={randomCocktail?.image} alt={randomCocktail?.name} />
+      <h2>{cocktail?.name || "Unknown"}</h2>
+      <img src={cocktail?.image} alt={cocktail?.name} />
     </div>
   );
 }

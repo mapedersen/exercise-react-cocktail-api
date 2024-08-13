@@ -1,32 +1,40 @@
 import { ReactElement } from "react";
-import { useOutletContext } from "react-router-dom";
-import { ICocktailContext } from "../interfaces/interfaces";
 import { useNavigate } from "react-router-dom";
 import { formatCocktailName } from "../utils/utils";
+import { ICocktail } from "../interfaces/interfaces";
 
 // Button to generate a new cocktail
-export function RandomCocktailButton(): ReactElement {
-  const { fetchNewCocktail } = useOutletContext<ICocktailContext>();
 
+interface NewRandomCocktailButtonProps {
+  onClick: () => void;
+}
+export function NewRandomCocktailButton({ onClick }: NewRandomCocktailButtonProps): ReactElement {
   function handleClick() {
-    fetchNewCocktail();
+    onClick();
   }
   return <button onClick={handleClick}>New Cocktail</button>;
 }
 
 // Button to navigate to the CockTailInfoPage
-export function SeeMoreButton(): ReactElement {
-  const { randomCocktail } = useOutletContext<ICocktailContext>();
+
+interface SeeMoreButtonProps {
+  cocktail: ICocktail | null;
+}
+export function SeeMoreButton({ cocktail }: SeeMoreButtonProps): ReactElement {
   const navigate = useNavigate();
 
   function handleClick() {
-    if (randomCocktail) {
+    if (cocktail) {
       // Encode the name to be used in the URL
-      const formattedName = formatCocktailName(randomCocktail.name);
+      const formattedName = formatCocktailName(cocktail.name);
       // Navigate to the detail page with the cocktail name
-      navigate(`/random-cocktail/${formattedName}`);
+      navigate(`/cocktail/${formattedName}`);
     }
   }
 
-  return <button onClick={handleClick}>See more</button>;
+  return (
+    <button onClick={handleClick} disabled={!cocktail}>
+      See more
+    </button>
+  );
 }

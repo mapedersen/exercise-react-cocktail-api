@@ -15,5 +15,5 @@ export interface ICocktailResponse {
 
 export interface ICocktailContext {
   randomCocktail: ICocktail | null;
-  fetchNewCocktail: () => Promise<void>;
+  fetchNewRandomCocktail: () => Promise<void>;
 }
