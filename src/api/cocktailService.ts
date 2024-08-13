@@ -87,3 +87,27 @@ export async function fetchCocktailByName(name: string): Promise<ICocktail | nul
     }
   }
 }
+
+export async function fetchCocktailsBySearch(query: string): Promise<ICocktail[]> {
+  const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+    const data = await response.json();
+
+    if (!data.drinks || data.drinks.length === 0) {
+      return []; // Return an empty array if no cocktails are found
+    }
+
+    return data.drinks.map((drink: any): ICocktail => transformDrinkData(drink)); // Return an array of cocktails
+  } catch (error) {
+    // If an error occurs during the fetch or processing, log it and return an empty array
+    console.error(
+      "Failed to fetch cocktails:",
+      error instanceof Error ? error.message : "Unknown error"
+    );
+    return []; // Return an empty array on error
+  }
+}
