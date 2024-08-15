@@ -1,11 +1,17 @@
 import { ReactElement } from "react";
 import { Link } from "react-router-dom";
 
+import "../css/NavBar.css";
+
 export default function NavBar(): ReactElement {
   return (
     <nav>
-      <Link to="/">Home</Link>
-      <Link to="/search">Search</Link>
+      <Link className="navbar-button" to="/">
+        Random
+      </Link>
+      <Link className="navbar-button" to="/search">
+        Search
+      </Link>
     </nav>
   );
 }

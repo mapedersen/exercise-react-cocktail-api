@@ -58,10 +58,11 @@ export async function fetchRandomCockTail(): Promise<ICocktail | null> {
 // Function to fetch a cocktail by id from an CocktailDBAPI, returns a promise that resolves to a cocktail object or null
 export async function fetchCocktailByName(name: string): Promise<ICocktail | null> {
   // Replace hyphens with spaces
-  const formattedName = name.replace(/-/g, " ");
+  // const formattedName = name.replace(/-/g, " ");
   // Encode the name to handle spaces and other special characters
-  const encodedName = encodeURIComponent(formattedName);
+  const encodedName = encodeURIComponent(name);
   const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${encodedName}`;
+  console.log(url);
   try {
     const response = await fetch(url);
     if (!response.ok) {

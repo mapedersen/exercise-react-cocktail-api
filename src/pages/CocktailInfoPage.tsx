@@ -1,9 +1,10 @@
 import { ReactElement, useEffect, useState } from "react";
-// import { useCocktailByID } from "../hooks/useCocktailByName";
-import DetailedCocktailCard from "../components/DetailedCocktailCard";
 import { useParams } from "react-router-dom";
-import { ICocktail } from "../interfaces/interfaces";
+
 import { fetchCocktailByName } from "../api/cocktailService";
+import { ICocktail } from "../interfaces/interfaces";
+
+import DetailedCocktailCard from "../components/DetailedCocktailCard";
 
 export default function CocktailInfoPage(): ReactElement {
   const { name } = useParams<{ name: string }>();

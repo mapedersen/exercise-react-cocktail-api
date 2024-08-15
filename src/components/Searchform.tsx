@@ -27,23 +27,23 @@ export default function CocktailSearchForm({ onResults }: CocktailSearchFormProp
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <fieldset>
-        <legend>Search for a Cocktail</legend>
+    <form onSubmit={handleSubmit} id="cocktailSearchForm">
+      {/* <fieldset> */}
+      {/* <legend>Search for a Cocktail</legend> */}
 
-        <label htmlFor="search">Search:</label>
-        <input
-          type="search"
-          id="search"
-          name="query"
-          value={query}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
-          placeholder="Enter cocktail name"
-          required
-        />
+      {/* <label htmlFor="search">Search:</label> */}
+      <input
+        type="search"
+        id="search"
+        name="query"
+        value={query}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
+        placeholder="Enter cocktails name"
+        required
+      />
 
-        <button type="submit">Search</button>
-      </fieldset>
+      <button type="submit">Search</button>
+      {/* </fieldset> */}
     </form>
   );
 }

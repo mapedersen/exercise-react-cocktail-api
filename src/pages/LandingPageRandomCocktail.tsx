@@ -8,11 +8,13 @@ export default function LandingPageRandomCocktail(): ReactElement {
   const { randomCocktail, fetchNewRandomCocktail } = useRandomCocktail();
 
   return (
-    <>
+    <div className="landingPage">
       <h1>Random Cocktail</h1>
       <CocktailCard cocktail={randomCocktail} />
-      <NewRandomCocktailButton onClick={fetchNewRandomCocktail} />
-      <SeeMoreButton cocktail={randomCocktail} />
-    </>
+      <div className="landingPageButtons">
+        <NewRandomCocktailButton onClick={fetchNewRandomCocktail} />
+        <SeeMoreButton cocktail={randomCocktail} />
+      </div>
+    </div>
   );
 }

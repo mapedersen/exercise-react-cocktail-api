@@ -7,7 +7,7 @@ export function formatCocktailName(name: string): string {
 }
 
 import { ICocktail } from "../interfaces/interfaces";
-
+// Function to be used after recieving an API response containing cocktail(s)
 export function transformDrinkData(drink: any): ICocktail {
   return {
     id: drink.idDrink,

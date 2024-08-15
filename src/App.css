@@ -1,0 +1,55 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.landingPage h1 {
+  font-size: 2rem;
+}
+
+.landingPageButtons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.CocktailCard img {
+  height: 500px;
+}
+
+.DetailedCocktailCard img {
+  height: 500px;
+}
+
+.DetailedCocktailCard ul {
+  list-style: none;
+  padding: 0px;
+}
+
+#cocktailSearchForm {
+  margin-top: 25px;
+  border: none;
+  display: flex;
+  gap: 10px;
+}
+
+#cocktailSearchForm button {
+  margin: 5px;
+}
+
+#search {
+  padding: 15px;
+  margin: 5px;
+  border: none;
+  background-color: #242424; /* Same as background color */
+  color: #ffffff; /* Text color should be readable */
+  border: 1px solid #444444; /* Subtle border color */
+  padding: 0.6em 1.2em;
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+}

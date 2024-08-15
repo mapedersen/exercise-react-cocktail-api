@@ -1,0 +1,25 @@
+nav {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.navbar-button {
+  border-radius: 8px;
+  border: 1px solid #ffffff; /* Light border for contrast */
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #333333; /* Darker background to contrast with #242424 */
+  color: #ffffff; /* Light text color for readability */
+  cursor: pointer;
+  transition: background-color 0.25s, color 0.25s, border-color 0.25s;
+}
+
+.navbar-button:hover,
+.navbar-button:focus {
+  background-color: #444444; /* Slightly lighter background on hover/focus */
+  color: #e0e0e0; /* Slightly lighter text color on hover/focus */
+  border-color: #e0e0e0; /* Light border color on hover/focus */
+}
