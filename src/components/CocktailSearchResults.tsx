@@ -39,7 +39,7 @@ export default function CocktailSearchResults({
           <li
             key={cocktail.id}
             onClick={() => handleCocktailClick(cocktail.name)}
-            style={{ cursor: "pointer" }}
+            style={{ cursor: "pointer", listStyle: "none" }}
           >
             <h3>{cocktail.name}</h3>
           </li>
