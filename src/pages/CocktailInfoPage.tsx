@@ -5,16 +5,24 @@ import { fetchCocktailByName } from "../api/cocktailService";
 import { ICocktail } from "../interfaces/interfaces";
 
 import DetailedCocktailCard from "../components/DetailedCocktailCard";
+import { LoadingSpinner } from "../components/ui/Loading";
 
 export default function CocktailInfoPage(): ReactElement {
   const { name } = useParams<{ name: string }>();
   const [cocktail, setCocktail] = useState<ICocktail | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (name) {
+      setIsLoading(true);
       fetchCocktailByName(name).then(setCocktail);
+      setTimeout(() => setIsLoading(false), 500);
     }
   }, [name]);
 
-  return <>{cocktail ? <DetailedCocktailCard cocktail={cocktail} /> : <p>Loading...</p>}</>;
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  return <DetailedCocktailCard cocktail={cocktail} />;
 }

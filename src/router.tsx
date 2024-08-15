@@ -3,6 +3,7 @@ import App from "./App";
 import LandingPageRandomCocktail from "./pages/LandingPageRandomCocktail";
 import SearchPage from "./pages/SearchPage";
 import CocktailInfoPage from "./pages/CocktailInfoPage";
+import FavouriteCocktailsPage from "./pages/FavouriteCocktailsPage";
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
       {
         path: "/search",
         element: <SearchPage />,
+      },
+      {
+        path: "/favourites",
+        element: <FavouriteCocktailsPage />,
       },
     ],
   },

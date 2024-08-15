@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { ICocktail } from "../interfaces/interfaces";
 
 interface DetailedCocktailCardProps {
-  cocktail: ICocktail;
+  cocktail: ICocktail | null;
 }
 
 export default function DetailedCocktailCard({
