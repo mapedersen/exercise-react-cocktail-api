@@ -10,11 +10,10 @@ import { LoadingSpinner } from "../components/ui/Loading";
 export default function CocktailInfoPage(): ReactElement {
   const { name } = useParams<{ name: string }>();
   const [cocktail, setCocktail] = useState<ICocktail | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (name) {
-      setIsLoading(true);
       fetchCocktailByName(name).then(setCocktail);
       setTimeout(() => setIsLoading(false), 500);
     }
