@@ -48,7 +48,6 @@ export default function CocktailInfoPage(): ReactElement {
         onClickRemove={handleRemoveClick}
         isFavourite={isFavourite}
       />
-      <h2>{isFavourite ? "is fav" : "is not fav"}</h2>
     </>
   );
 }
