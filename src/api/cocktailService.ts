@@ -62,7 +62,6 @@ export async function fetchCocktailByName(name: string): Promise<ICocktail | nul
   // Encode the name to handle spaces and other special characters
   const encodedName = encodeURIComponent(name);
   const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${encodedName}`;
-  console.log(url);
   try {
     const response = await fetch(url);
     if (!response.ok) {

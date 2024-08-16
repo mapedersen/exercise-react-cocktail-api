@@ -15,7 +15,7 @@ export function useRandomCocktail() {
       const data = await fetchRandomCockTail();
       console.log(data);
       setRandomCocktail(data);
-      setTimeout(() => setIsLoading(false), 1000);
+      setTimeout(() => setIsLoading(false), 500);
       // Catch errors if no cocktail is recieved
     } catch (error) {
       if (error instanceof Error) {

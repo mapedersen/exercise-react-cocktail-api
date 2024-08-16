@@ -13,7 +13,7 @@ export default function SearchPage(): ReactElement {
   return (
     <div>
       <CocktailSearchForm onResults={handleResults} />
-      {results.length > 0 ? <CocktailSearchResults results={results} /> : <p>No results found.</p>}
+      <CocktailSearchResults results={results} />
     </div>
   );
 }

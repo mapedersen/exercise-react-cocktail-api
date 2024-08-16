@@ -1,12 +1,13 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { formatCocktailName } from "../utils/utils";
-import { ICocktail } from "../interfaces/interfaces";
+import { formatCocktailName } from "../../utils/utils";
+import { ICocktail } from "../../interfaces/interfaces";
 
 // Button to generate a new cocktail
 interface NewRandomCocktailButtonProps {
   onClick: () => void;
 }
+
 export function NewRandomCocktailButton({ onClick }: NewRandomCocktailButtonProps): ReactElement {
   function handleClick() {
     onClick();
@@ -18,6 +19,7 @@ export function NewRandomCocktailButton({ onClick }: NewRandomCocktailButtonProp
 interface SeeMoreButtonProps {
   cocktail: ICocktail | null;
 }
+
 export function SeeMoreButton({ cocktail }: SeeMoreButtonProps): ReactElement {
   const navigate = useNavigate();
 
@@ -36,4 +38,19 @@ export function SeeMoreButton({ cocktail }: SeeMoreButtonProps): ReactElement {
       See more
     </button>
   );
+}
+
+interface ToggleCocktailAsFavouriteButtonProps {
+  onClickAdd: () => void;
+  onClickRemove: () => void;
+  isFavourite: boolean;
+}
+
+export function ToggleCocktailAsFavouriteButton({
+  onClickAdd,
+  onClickRemove,
+  isFavourite,
+}: ToggleCocktailAsFavouriteButtonProps) {
+  if (!isFavourite) return <button onClick={onClickAdd}>Add as favourite</button>;
+  else return <button onClick={onClickRemove}>Remove as favourite</button>;
 }

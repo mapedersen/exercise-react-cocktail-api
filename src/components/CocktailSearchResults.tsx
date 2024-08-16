@@ -32,6 +32,10 @@ export default function CocktailSearchResults({
     navigate(`/cocktail/${encodeURIComponent(name)}`);
   };
 
+  if (results.length === 0) {
+    return <p>No results found</p>;
+  }
+
   return (
     <div>
       <ul>

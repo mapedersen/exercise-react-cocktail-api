@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { useRandomCocktail } from "../hooks/useRandomCocktail";
 
 import CocktailCard from "../components/CocktailCard";
-import { NewRandomCocktailButton, SeeMoreButton } from "../components/Buttons";
+import { NewRandomCocktailButton, SeeMoreButton } from "../components/ui/Buttons";
 import { LoadingSpinner } from "../components/ui/Loading";
 
 export default function LandingPageRandomCocktail(): ReactElement {

@@ -7,6 +7,7 @@ export interface ICocktail {
   ingredients: string[];
   measurements: string[];
   glass: string;
+  favourite: boolean;
 }
 
 export interface ICocktailResponse {
@@ -14,6 +15,11 @@ export interface ICocktailResponse {
 }
 
 export interface ICocktailContext {
-  randomCocktail: ICocktail | null;
-  fetchNewRandomCocktail: () => Promise<void>;
+  favourites: ICocktail[];
+  handleAddToFavourites: (cocktail: ICocktail) => void;
+  handleRemoveFromFavourites: (cocktail: ICocktail) => void;
+}
+
+export interface FavouriteCocktails {
+  cocktails: ICocktail[];
 }
