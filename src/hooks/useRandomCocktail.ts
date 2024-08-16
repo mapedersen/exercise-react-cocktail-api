@@ -11,6 +11,7 @@ export function useRandomCocktail() {
   async function fetchNewRandomCocktail() {
     try {
       // Fetch the cocktail data and update state
+      setIsLoading(true);
       const data = await fetchRandomCockTail();
       console.log(data);
       setRandomCocktail(data);
