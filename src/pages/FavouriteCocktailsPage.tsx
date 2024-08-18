@@ -3,8 +3,6 @@ import SmallCocktailCard from "../components/ui/smallCocktailCard";
 import { ICocktailContext } from "../interfaces/interfaces";
 import { useEffect, useState } from "react";
 
-import "../css/FavouritePage.css";
-
 import { LoadingSpinner } from "../components/ui/Loading";
 
 export default function FavouriteCocktailsPage() {
@@ -31,8 +29,7 @@ export default function FavouriteCocktailsPage() {
           flexWrap: "wrap",
           maxWidth: "800px",
           justifyContent: "center",
-        }}
-      >
+        }}>
         {favourites.map((fav) => (
           <li key={fav.id}>
             <SmallCocktailCard cocktail={fav} />
